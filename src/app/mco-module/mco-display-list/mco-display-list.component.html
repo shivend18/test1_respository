@@ -1,0 +1,47 @@
+<div class="mco-display-list">
+  <div class="mco-display-header">
+    User Information
+  </div>
+  <div class="mco-display-table">
+    <div class=" table-common table-header">
+      <div class="table-checkbox">
+        <input type="checkbox" [(ngModel)]="selectedAll" [indeterminate]="indeterminateValue" (click)="selectAll()"/>
+      </div>
+      <div>Name</div>
+      <div>Account Number</div>
+      <div>Country</div>
+      <div>Date Joined</div>
+    </div>
+    <div class="table-common table-details" [ngClass]="{'row-background':item.selected}"
+         *ngFor="let item of pagedItems">
+      <div class="table-checkbox">
+        <input type="checkbox" [(ngModel)]="item.selected" (ngModelChange)="itemSelected(item, $event)"/>
+      </div>
+      <div>{{item.name}}</div>
+      <div>{{item.accountNm}}</div>
+      <div>{{item.country}}</div>
+      <div>{{item.joinDate}}</div>
+    </div>
+  </div>
+</div>
+<div class="mco-list-pagination">
+  <div>
+    <label class="page-select-label">Rows per page:</label>
+    <select class="pagination-cursor" [(ngModel)]="pageCount" (click)="setPageDetails()">
+      <option>10</option>
+      <option>20</option>
+    </select>
+  </div>
+  <div>
+    {{paginate.startIndex + " - "}}{{(paginate.endIndex + 1)}}{{" of " + allItems.length}}
+  </div>
+  <div>
+    <span class="pagination-cursor" [ngClass]="{'arrow-disabled-class':paginate.currentPage === 1}"
+          (click)="setPage(paginate.currentPage - 1)"><img width="24" height="24" src="../assets/svg/left.svg">
+    </span>
+    <span class="pagination-cursor" [ngClass]="{'arrow-disabled-class':paginate.currentPage === paginate.totalPages}"
+          (click)="setPage(paginate.currentPage + 1)"><img width="24" height="24" src="../assets/svg/right.svg">
+    </span>
+  </div>
+</div>
+

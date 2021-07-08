@@ -1,0 +1,9 @@
+<div class="mco-landing-page">
+  <div class="mco-card-height">
+    <app-mco-card-details [selectedList]="selectedRows"></app-mco-card-details>
+  </div>
+  <div>
+    <app-mco-display-list (showSelectedRow)="MapSelectedDetails($event)"></app-mco-display-list>
+  </div>
+</div>
+

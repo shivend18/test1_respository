@@ -1,0 +1,16 @@
+<div *ngFor="let item of selectedList">
+  <div class="cards" >
+    <div class="card-title">
+      {{item.name}}
+    </div>
+    <div class="card-details">
+      <div><span>Email Address:</span> <span class="card-color">{{item.email}}</span></div>
+      <div><span>Postal Address:</span><span class="card-color">{{item.postalAdd}}</span></div>
+      <div><span>Phone Number:</span><span class="card-color">{{item.phNum}}</span></div>
+      <div><span>Favourite band:</span><span class="card-color">{{item.favBand}}</span></div>
+    </div>
+  </div>
+</div>
+<div class="no-list-available" *ngIf="selectedList.length === 0">
+  User information not selected from the list
+</div>
